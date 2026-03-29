@@ -133,6 +133,8 @@ Fhenix is live on the following testnets: **Base**, **Arbitrum**, and **Ethereum
 
 *Projects and applications built on Fhenix will be listed here as they emerge.*
 
+- [Fhenix Serverless Poker](https://github.com/tumhi4/fhenix-poker) - A 100% on-chain, trustless poker engine powered by the CoFHE Coprocessor using `FHE.select()` and `euint8` encrypted cards. ([Live Demo](https://fhenix-poker.vercel.app/))
+
 ---
 
 ## 🌟 Design Partners & Case Studies
