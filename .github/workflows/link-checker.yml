@@ -8,27 +8,43 @@ on:
   schedule:
     - cron: '0 0 * * 0'  # Weekly check
 
+# Least-privilege token scope: this workflow only reads the repository.
+permissions:
+  contents: read
+
 jobs:
   check-links:
     runs-on: ubuntu-latest
+    # Least-privilege token scope: this workflow only reads the repository.
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26  # v3
+
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610  # v3
         with:
           node-version: '18'
-      
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Run awesome-lint
         run: npm run lint
-      
-      - name: Check links with linkspector
-        uses: sibiraj-s/linkspector-action@v1
+
+      # `sibiraj-s/linkspector-action` was deleted upstream ("Repository not found"),
+      # so this step could never run. The check is performed with `lychee`, which is
+      # already used by the other repositories in this workspace and is pinned to a
+      # commit SHA. The settings that used to live in `.linkspector.yml` are kept:
+      # bare `https://github.com/<owner>/<repo>` links are excluded (they may be
+      # private), the timeout stays at 30s and the same user agent is used.
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8  # v2
         with:
-          config: .linkspector.yml
-          directory: .
-          files: README.md
+          args: >-
+            --no-progress --max-concurrency 4 --timeout 30
+            --user-agent awesome-fhenix-link-checker
+            --exclude '^https://github.com/[^/]+/[^/]+$'
+            ./README.md
+          fail: true
 
