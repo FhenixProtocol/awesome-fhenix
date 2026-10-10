@@ -71,6 +71,8 @@ Fhenix is live on the following testnets: **Base**, **Arbitrum**, and **Ethereum
 - [cofhe-hardhat-plugin](https://github.com/FhenixProtocol/cofhe-hardhat-plugin) - Hardhat integration for FHE development
 - [cofhe-hardhat-starter](https://github.com/fhenixprotocol/cofhe-hardhat-starter) - Starter template for building FHE contracts with Hardhat
   - Related: [Quick Start Guide](https://docs.fhenix.io/fhe-library/introduction/quick-start)
+- [FHEye](https://github.com/kriss39/fheye) - Open-source inspector that shows which encrypted values in a CoFHE transaction anyone can compute from public data, with a plain-language verdict and the fix
+  - Related: [Live App](https://fheye.vercel.app) | [Docs](https://fheye.vercel.app/#/docs)
 
 ### Vibe Coding
 - [Neo FHE AI Assistant](https://fhenix.notion.site/neo-fhe-ai-assistant) - AI-powered coding assistant for FHE development
